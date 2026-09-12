@@ -1,0 +1,37 @@
+{
+  "campaign": "DS&D Social Campaign v1",
+  "repository_role": "Private source of record for copy, scripts, approvals, and asset manifests.",
+  "publication_rule": "No generation asset may be published or scheduled without explicit owner confirmation.",
+  "assets": [
+    {
+      "id": "V07",
+      "slug": "pencil-thought-experiment",
+      "script": "campaigns/scripts/V07-pencil-thought-experiment.md",
+      "format": "planned vertical 9:16, 15 seconds; retained non-campaign test segment: 8 seconds",
+      "status": "generation deferred by owner; partial test segment retained for audit only and excluded from campaign use",
+      "media_url": "/manus-storage/dsd-campaign-v07-pencil-part-a_8b50a49b.mp4",
+      "sha256": "6b1c3b076d8c2ede4482ffca786ee55fd637cd72efc22e56168bd55bc459e2f0",
+      "approval": "not approved; do not publish or reuse"
+    },
+    {
+      "id": "V08",
+      "slug": "tshirt-false-choice",
+      "script": "campaigns/scripts/V08-tshirt-false-choice.md",
+      "format": "vertical 9:16, 15 seconds",
+      "status": "script-ready; generation deferred by owner",
+      "media_url": null,
+      "sha256": null,
+      "approval": "not approved; do not generate or publish"
+    },
+    {
+      "id": "V09",
+      "slug": "oversized-bottle",
+      "script": "campaigns/scripts/V09-oversized-bottle.md",
+      "format": "vertical 9:16, 15 seconds",
+      "status": "script-ready; generation deferred by owner",
+      "media_url": null,
+      "sha256": null,
+      "approval": "not approved; do not generate or publish"
+    }
+  ]
+}

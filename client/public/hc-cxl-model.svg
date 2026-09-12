@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <rect width="800" height="480" fill="#121815" rx="6"/>
+  <rect x="1" y="1" width="798" height="478" fill="none" stroke="#2a3830" stroke-width="2" rx="5"/>
+  
+  <!-- Header -->
+  <text x="40" y="48" fill="#b8f56a" font-family="monospace" font-size="13" letter-spacing="2">HC-CXL v2.1R / DETERMINISTIC PHYSICAL GOVERNANCE MODEL</text>
+  <text x="40" y="72" fill="#7d887e" font-family="monospace" font-size="11">5 STAGES × 7 ENGINES OPERATIONAL MATRIX · 73ps BOUND · 50ns GAP</text>
+  <line x1="40" y1="90" x2="760" y2="90" stroke="#253229" stroke-width="1"/>
+
+  <!-- Matrix Representation -->
+  <g transform="translate(40, 120)">
+    <!-- Stage headers -->
+    <text x="120" y="0" fill="#9ba59a" font-family="monospace" font-size="11" text-anchor="middle">STAGE 01</text>
+    <text x="240" y="0" fill="#9ba59a" font-family="monospace" font-size="11" text-anchor="middle">STAGE 02</text>
+    <text x="360" y="0" fill="#9ba59a" font-family="monospace" font-size="11" text-anchor="middle">STAGE 03</text>
+    <text x="480" y="0" fill="#9ba59a" font-family="monospace" font-size="11" text-anchor="middle">STAGE 04</text>
+    <text x="600" y="0" fill="#9ba59a" font-family="monospace" font-size="11" text-anchor="middle">STAGE 05</text>
+
+    <!-- Engine rows -->
+    <g transform="translate(0, 25)">
+      <!-- Row 1 -->
+      <text x="0" y="20" fill="#6d786e" font-family="monospace" font-size="10">ENG 1 (ARITH)</text>
+      <rect x="90" y="5" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="210" y="5" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="330" y="5" width="60" height="24" fill="#1a251f" stroke="#b8f56a" stroke-width="1.5" rx="3"/>
+      <rect x="450" y="5" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="570" y="5" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+
+      <!-- Row 2 -->
+      <text x="0" y="55" fill="#6d786e" font-family="monospace" font-size="10">ENG 2 (ORDER)</text>
+      <rect x="90" y="40" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="210" y="40" width="60" height="24" fill="#1a251f" stroke="#b8f56a" stroke-width="1.5" rx="3"/>
+      <rect x="330" y="40" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="450" y="40" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="570" y="40" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+
+      <!-- Row 3 -->
+      <text x="0" y="90" fill="#6d786e" font-family="monospace" font-size="10">ENG 3 (CANON)</text>
+      <rect x="90" y="75" width="60" height="24" fill="#1a251f" stroke="#b8f56a" stroke-width="1.5" rx="3"/>
+      <rect x="210" y="75" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="330" y="75" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="450" y="75" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="570" y="75" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+
+      <!-- Row 4 -->
+      <text x="0" y="125" fill="#6d786e" font-family="monospace" font-size="10">ENG 4 (LEDGER)</text>
+      <rect x="90" y="110" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="210" y="110" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="330" y="110" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="450" y="110" width="60" height="24" fill="#1a251f" stroke="#b8f56a" stroke-width="1.5" rx="3"/>
+      <rect x="570" y="110" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+
+      <!-- Row 5 -->
+      <text x="0" y="160" fill="#6d786e" font-family="monospace" font-size="10">ENG 5 (REPLAY)</text>
+      <rect x="90" y="145" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="210" y="145" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="330" y="145" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="450" y="145" width="60" height="24" fill="#1a251f" stroke="#35483b" rx="3"/>
+      <rect x="570" y="145" width="60" height="24" fill="#1a251f" stroke="#b8f56a" stroke-width="1.5" rx="3"/>
+    </g>
+  </g>
+
+  <!-- Technical Envelope Box -->
+  <rect x="40" y="340" width="720" height="100" fill="#0f1411" stroke="#253229" rx="4"/>
+  <text x="60" y="370" fill="#b8f56a" font-family="monospace" font-size="11">TIMING &amp; STABILITY CONSTANTS</text>
+  <text x="60" y="398" fill="#cfd6cd" font-family="monospace" font-size="12">Amplitude Envelope: ±0.05 V  |  Decision Bound: 73 ps  |  Metastability Gap: 50 ns</text>
+  <text x="60" y="422" fill="#758276" font-family="monospace" font-size="10">Design-reference baseline under pre-silicon model scope · Subject to empirical validation</text>
+</svg>

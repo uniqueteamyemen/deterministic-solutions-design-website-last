@@ -1,0 +1,1 @@
+ALTER TABLE `inquiries` ADD `referralSource` enum('direct','search','linkedin','github','referral','event','publication','other') DEFAULT 'direct' NOT NULL;

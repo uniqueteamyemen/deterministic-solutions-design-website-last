@@ -1,0 +1,6 @@
+{
+  "name": "Deterministic Solutions & Design",
+  "description": "A systems-design and research office making consequential details visible and defining reliable next shared actions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

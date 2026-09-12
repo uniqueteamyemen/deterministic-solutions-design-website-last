@@ -1,0 +1,33 @@
+{
+  "entities": {
+    "inquiries": {
+      "title": "Inquiry",
+      "description": "Public inquiries submitted via the DS&D contact form",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "organization": { "type": "string" },
+        "topic": { "type": "string", "enum": ["architecture", "paylock", "research", "partnership", "other"] },
+        "message": { "type": "string" },
+        "sourcePath": { "type": "string" },
+        "referralSource": { "type": "string" },
+        "status": { "type": "string", "enum": ["new", "read", "closed"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["fullName", "email", "topic", "message", "status", "createdAt"]
+    },
+    "users": {
+      "title": "User",
+      "description": "System users and administrators",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestoreRules": "firestore.rules"
+}

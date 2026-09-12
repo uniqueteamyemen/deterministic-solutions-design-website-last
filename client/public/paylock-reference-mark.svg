@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <rect width="100%" height="100%" fill="#0d100e" rx="8"/>
+  <rect x="1" y="1" width="238" height="78" fill="none" stroke="#b8f56a" stroke-width="1" stroke-opacity="0.3" rx="7"/>
+  <!-- P (Event) -->
+  <text x="35" y="52" font-family="'Cinzel', 'Times New Roman', serif" font-size="34" font-weight="700" fill="#f4f6f0">P</text>
+  <!-- Connector with reference dot -->
+  <line x1="75" y1="42" x2="165" y2="42" stroke="#b8f56a" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="120" cy="42" r="6" fill="#b8f56a" filter="drop-shadow(0 0 4px #b8f56a)"/>
+  <circle cx="120" cy="42" r="10" fill="none" stroke="#b8f56a" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- L (State) -->
+  <text x="185" y="52" font-family="'Cinzel', 'Times New Roman', serif" font-size="34" font-weight="700" fill="#f4f6f0">L</text>
+  <!-- Labels -->
+  <text x="38" y="70" font-family="monospace" font-size="7" fill="#778174" letter-spacing="1">EVENT</text>
+  <text x="105" y="70" font-family="monospace" font-size="7" fill="#b8f56a" letter-spacing="1">REFERENCE</text>
+  <text x="186" y="70" font-family="monospace" font-size="7" fill="#778174" letter-spacing="1">STATE</text>
+</svg>
