@@ -1,29 +1,12 @@
 import type { Request, Response, Router } from "express";
 import { Router as createRouter } from "express";
 import { inquirySchema } from "../shared/inquiry";
-import { firestore, collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp } from "./firebase";
+import { firestore, collection, addDoc, serverTimestamp } from "./firebase";
 
 const WINDOW_MS = 10 * 60 * 1000;
 const REQUEST_LIMIT = 10;
 const requestsByAddress = new Map<string, { count: number; resetAt: number }>();
 const TEAM_NOTIFICATION_EMAIL = "baker@deterministicsolutionsdesign.com";
-
-// Resilient memory cache to ensure high availability across environments
-interface StoredInquiry {
-  id: string;
-  fullName: string;
-  email: string;
-  organization?: string | null;
-  topic: string;
-  message: string;
-  recipient: string;
-  sourcePath: string;
-  referralSource: string;
-  status: string;
-  createdAt: string;
-}
-
-const inMemoryInquiries: StoredInquiry[] = [];
 
 function canSubmit(request: Request) {
   const now = Date.now();
@@ -41,20 +24,13 @@ function canSubmit(request: Request) {
 export function createInquiryRouter(): Router {
   const router = createRouter();
 
-  // Internal discussion & message history space
+  // Health and routing status
   router.get("/", async (_request: Request, response: Response) => {
-    try {
-      const q = query(collection(firestore, "inquiries"), orderBy("createdAt", "desc"), limit(40));
-      const snapshot = await getDocs(q);
-      const inquiries = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      response.json({ inquiries, recipientEmail: TEAM_NOTIFICATION_EMAIL, source: "firestore" });
-    } catch (error) {
-      console.warn("[Firestore] Reading via Firestore encountered error, serving internal memory buffer:", error);
-      response.json({ inquiries: inMemoryInquiries, recipientEmail: TEAM_NOTIFICATION_EMAIL, source: "buffer" });
-    }
+    response.json({
+      status: "active",
+      recipientEmail: TEAM_NOTIFICATION_EMAIL,
+      channel: "managed-inquiry-gateway",
+    });
   });
 
   router.post("/", async (request: Request, response: Response) => {
@@ -73,8 +49,7 @@ export function createInquiryRouter(): Router {
       return;
     }
 
-    const newRecord: StoredInquiry = {
-      id: "inq_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+    const newRecord = {
       fullName: parsed.data.fullName,
       email: parsed.data.email,
       organization: parsed.data.organization || null,
@@ -85,21 +60,23 @@ export function createInquiryRouter(): Router {
       referralSource: parsed.data.referralSource,
       status: "new",
       createdAt: new Date().toISOString(),
+      serverTimestamp: serverTimestamp(),
     };
 
-    inMemoryInquiries.unshift(newRecord);
-    if (inMemoryInquiries.length > 100) inMemoryInquiries.pop();
-
     try {
-      const docRef = await addDoc(collection(firestore, "inquiries"), {
-        ...newRecord,
-        serverTimestamp: serverTimestamp(),
-      });
+      const docRef = await addDoc(collection(firestore, "inquiries"), newRecord);
       console.info(`[Firestore] Inquiry recorded successfully for ${TEAM_NOTIFICATION_EMAIL} with ID: ${docRef.id}`);
-      response.status(201).json({ accepted: true, id: docRef.id, recipient: TEAM_NOTIFICATION_EMAIL, channel: "firestore" });
+      response.status(201).json({
+        accepted: true,
+        id: docRef.id,
+        recipient: TEAM_NOTIFICATION_EMAIL,
+        channel: "firestore",
+      });
     } catch (error) {
-      console.warn("[Firestore] Inquiry recorded to local buffer (Firestore fallback):", error);
-      response.status(201).json({ accepted: true, id: newRecord.id, recipient: TEAM_NOTIFICATION_EMAIL, channel: "buffer" });
+      console.error("[Firestore] Failed to store inquiry:", error);
+      response.status(503).json({
+        error: "The inquiry service is temporarily unavailable. Please email baker@deterministicsolutionsdesign.com directly.",
+      });
     }
   });
 
